@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, test } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Blog from './Blog';
 
@@ -12,31 +12,25 @@ describe('Blog', () => {
     likes: 10,
   };
 
-  test('renders only tile and author by default', () => {
+  it('renders only title and author by default', () => {
     render(<Blog blog={blog} handleVote={vi.fn()} handleDelete={vi.fn()} />);
 
-    expect(
-      screen.getByText('Testing the testing', { exact: false })
-    ).toBeDefined();
-    expect(
-      screen.queryByText('http://example.com', { exact: false })
-    ).toBeNull();
+    expect(screen.getByText('Testing the testing', { exact: false })).toBeDefined();
+    expect(screen.queryByText('http://example.com', { exact: false })).toBeNull();
   });
 
-  test('renders url and likes after clicking view', async () => {
+  it('renders url and likes after clicking view', async () => {
     const user = userEvent.setup();
 
     render(<Blog blog={blog} handleVote={vi.fn()} handleDelete={vi.fn()} />);
     const button = screen.getByText('view');
     await user.click(button);
 
-    expect(
-      screen.getByText('http://example.com', { exact: false })
-    ).toBeDefined();
+    expect(screen.getByText('http://example.com', { exact: false })).toBeDefined();
     expect(screen.getByText('likes 10', { exact: false })).toBeDefined();
   });
 
-  test('clicking like twice calls event handler twice', async () => {
+  it('clicking like twice calls event handler twice', async () => {
     const handleVote = vi.fn();
     const user = userEvent.setup();
 
