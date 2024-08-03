@@ -28,10 +28,18 @@ jobs:
       with:
         node-version: '20'
 
+    - name: Check Node.js version
+      run: node -v
+
     - name: Install backend dependencies
       run: |
         cd backend
         npm install
+
+    - name: Rebuild native modules
+      run: |
+        cd backend
+        npm rebuild
 
     - name: Run backend tests
       run: |
