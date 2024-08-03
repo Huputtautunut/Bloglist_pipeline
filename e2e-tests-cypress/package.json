@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run dev",
     "cypress:open": "cypress open",
-    "test:e2e": "npm run start & npx cypress run" 
+    "test:e2e": "npm run dev & npx cypress run" 
   },
   "devDependencies": {
     "cypress": "^12.3.0"
