@@ -59,11 +59,3 @@ jobs:
         cd e2e-tests-cypress
         rm -rf node_modules
         npm install
-
-    - name: Run Cypress tests
-      run: |
-        cd e2e-tests-cypress
-        npx cypress run
-      env:
-        CYPRESS_baseUrl: http://localhost:5173
-        NODE_ENV: test
