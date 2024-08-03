@@ -38,30 +38,31 @@ jobs:
         npm install
         npm rebuild bcrypt
 
-    - name: Rebuild native modules
-      run: |
-        cd backend
-        npm rebuild
-
     - name: Run backend tests
       run: |
         cd backend
         npm test
 
-    - name: Install frontend dependencies
+    - name: Clean and install frontend dependencies
       run: |
         cd frontend
+        rm -rf node_modules
         npm install
 
     - name: Run frontend tests
       run: |
         cd frontend
-        npm test
+        npx vitest run
+
+    - name: Clean and install Cypress dependencies
+      run: |
+        cd e2e-tests-cypress
+        rm -rf node_modules
+        npm install
 
     - name: Run Cypress tests
       run: |
         cd e2e-tests-cypress
-        npm install
         npx cypress run
       env:
         CYPRESS_baseUrl: http://localhost:3000
