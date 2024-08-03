@@ -1,10 +1,11 @@
+import React from 'react'; // Add this import
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NewBlog from './NewBlog';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('NewBlog', () => {
-  it('calls event handler with correct data', async () => {
+  test('calls event handler with correct data', async () => {
     const user = userEvent.setup();
     const doCreate = vi.fn();
 
