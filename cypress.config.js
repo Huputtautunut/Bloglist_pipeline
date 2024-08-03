@@ -1,3 +1,5 @@
+//just doing testing of pushing ot git
+
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
