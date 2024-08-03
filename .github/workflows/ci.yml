@@ -65,5 +65,5 @@ jobs:
         cd e2e-tests-cypress
         npx cypress run
       env:
-        CYPRESS_baseUrl: http://localhost:3000
+        CYPRESS_baseUrl: http://localhost:5173
         NODE_ENV: test
