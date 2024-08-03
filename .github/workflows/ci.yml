@@ -31,10 +31,12 @@ jobs:
     - name: Check Node.js version
       run: node -v
 
-    - name: Install backend dependencies
+    - name: Clean and install backend dependencies
       run: |
         cd backend
+        rm -rf node_modules
         npm install
+        npm rebuild bcrypt
 
     - name: Rebuild native modules
       run: |
